@@ -2,95 +2,124 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8" />
-<title>NeuroKiddo</title>
+<title>NeuroKiddo - Monde Enchanté</title>
 <style>
   body {
     margin: 0;
-    background: linear-gradient(135deg, #A1C4FD, #C2E9FB);
+    height: 100vh;
+    background: linear-gradient(135deg, #7B2FF7, #F107A3);
+    overflow: hidden;
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    color: #333;
-    text-align: center;
-  }
-
-  header {
-    background: #6A9BFF;
-    padding: 20px 0;
     color: white;
-    font-size: 2.5em;
-    font-weight: bold;
-    letter-spacing: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
-  main {
-    padding: 40px 20px;
+  /* étoiles scintillantes */
+  @keyframes starBlink {
+    0%, 100% {opacity: 1;}
+    50% {opacity: 0.3;}
+  }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: starBlink 2s infinite ease-in-out;
   }
 
+  /* position étoiles aléatoires */
+  .star:nth-child(1) {top: 10%; left: 20%; width: 3px; height: 3px; animation-delay: 0s;}
+  .star:nth-child(2) {top: 30%; left: 40%; width: 2px; height: 2px; animation-delay: 1s;}
+  .star:nth-child(3) {top: 70%; left: 60%; width: 3px; height: 3px; animation-delay: 1.5s;}
+  .star:nth-child(4) {top: 50%; left: 80%; width: 2px; height: 2px; animation-delay: 0.5s;}
+  .star:nth-child(5) {top: 20%; left: 70%; width: 3px; height: 3px; animation-delay: 2s;}
+
+  /* cerveau central */
   .brain {
-    margin: 0 auto 30px;
-    width: 150px;
-    height: 150px;
-    background: #FF6F91;
-    border-radius: 50% 50% 60% 60% / 70% 70% 60% 60%;
     position: relative;
-    animation: pulse 2s infinite ease-in-out;
-    box-shadow: 0 0 20px #FF6F91;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle at center, #FFD700, #FF8C00);
+    border-radius: 50% 50% 60% 60% / 70% 70% 60% 60%;
+    box-shadow:
+      0 0 15px 5px #FFD700,
+      0 0 30px 10px #FFA500,
+      0 0 50px 20px #FF4500;
+    animation: pulseGlow 3s infinite ease-in-out;
+    z-index: 10;
   }
 
-  /* Une petite "bosse" en haut à gauche */
-  .brain::before {
-    content: "";
-    position: absolute;
-    top: 20px;
-    left: 40px;
-    width: 40px;
-    height: 50px;
-    background: #FF597B;
-    border-radius: 50% 50% 50% 50%;
-    box-shadow: 0 0 15px #FF597B;
-  }
-
-  /* Une bosse en haut à droite */
-  .brain::after {
-    content: "";
-    position: absolute;
-    top: 30px;
-    right: 40px;
-    width: 50px;
-    height: 40px;
-    background: #FF597B;
-    border-radius: 50% 50% 50% 50%;
-    box-shadow: 0 0 15px #FF597B;
-  }
-
-  @keyframes pulse {
+  /* pulsation du cerveau */
+  @keyframes pulseGlow {
     0%, 100% {
       transform: scale(1);
-      box-shadow: 0 0 20px #FF6F91;
+      box-shadow:
+        0 0 15px 5px #FFD700,
+        0 0 30px 10px #FFA500,
+        0 0 50px 20px #FF4500;
     }
     50% {
       transform: scale(1.1);
-      box-shadow: 0 0 40px #FF6F91;
+      box-shadow:
+        0 0 30px 10px #FFFF33,
+        0 0 50px 25px #FFB732,
+        0 0 70px 40px #FF7F11;
     }
   }
 
-  footer {
-    margin-top: 50px;
-    font-size: 0.9em;
-    color: #555;
+  /* cercle animé enfants */
+  .orbit {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    animation: spin 20s linear infinite;
+    top: calc(50% - 150px);
+    left: calc(50% - 150px);
+    pointer-events: none;
   }
+  @keyframes spin {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(360deg);}
+  }
+
+  /* enfant stylisé */
+  .child {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #FF69B4;
+    border-radius: 50%;
+    box-shadow: 0 0 8px 2px #FF1493;
+  }
+
+  /* positions fixes autour du cercle */
+  .child:nth-child(1) { top: 10%; left: 50%; margin-left: -20px;}
+  .child:nth-child(2) { top: 50%; left: 90%; margin-top: -20px; margin-left: -20px;}
+  .child:nth-child(3) { top: 90%; left: 50%; margin-left: -20px;}
+  .child:nth-child(4) { top: 50%; left: 10%; margin-top: -20px; margin-left: -20px;}
 </style>
 </head>
 <body>
 
-<header>NeuroKiddo</header>
+<!-- étoiles -->
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
 
-<main>
-  <div class="brain" aria-label="Cerveau animé"></div>
-  <h2>Bienvenue sur NeuroKiddo !</h2>
-  <p>Le site pour découvrir le cerveau en s’amusant !</p>
-</main>
+<!-- cerveau -->
+<div class="brain" aria-label="Cerveau illuminé"></div>
 
-<footer>© 2025 NeuroKiddo - Créé par Ashu</footer>
+<!-- enfants en orbite -->
+<div class="orbit" aria-label="Enfants autour du cerveau">
+  <div class="child" aria-label="Enfant 1"></div>
+  <div class="child" aria-label="Enfant 2"></div>
+  <div class="child" aria-label="Enfant 3"></div>
+  <div class="child" aria-label="Enfant 4"></div>
+</div>
 
 </body>
 </html>
