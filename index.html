@@ -3,173 +3,275 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>NeuroKiddo - Forêt enchantée</title>
+<title>NeuroKiddo - Monde enchanté</title>
 <style>
-  /* Reset et fond forêt pastel */
-  body, html {
+  /* Reset & style général */
+  * {
+    box-sizing: border-box;
+  }
+  body {
     margin: 0; padding: 0;
-    height: 100vh;
-    background: linear-gradient(180deg, #d9f0e8 0%, #a8d5c0 60%, #7abfa2 100%);
-    overflow: hidden;
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    position: relative;
+    background: linear-gradient(135deg, #f0e6f6, #e6f2f5);
+    color: #3e4a3a;
+    scroll-behavior: smooth;
+  }
+  a {
+    text-decoration: none;
+    color: #6b4ca6;
+  }
+  header {
+    background: #d8c9f7cc;
+    backdrop-filter: saturate(180%) blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0; left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+    box-shadow: 0 2px 8px rgba(107,76,166,0.3);
+  }
+  header h1 {
+    font-size: 1.8rem;
+    margin: 0;
+    color: #4b2e83;
+  }
+  nav a {
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #9a73e6;
+  }
+
+  main {
+    margin-top: 70px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 15px 60px;
+  }
+
+  section {
+    margin-bottom: 70px;
+  }
+  section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #5b3a96;
+    border-bottom: 3px solid #9a73e6;
+    display: inline-block;
+    padding-bottom: 6px;
+  }
+
+  /* --- SECTION ACCUEIL --- */
+  .accueil {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #3e4a3a;
-  }
-
-  /* Silhouettes d'arbres en CSS */
-  .tree {
-    position: absolute;
-    bottom: 0;
-    width: 120px;
-    height: 250px;
-    background: linear-gradient(to top, #6a8e70 0%, #a7c4a0 100%);
-    border-radius: 60px 60px 0 0;
-    filter: drop-shadow(0 3px 2px rgba(0,0,0,0.15));
-    transform-origin: bottom center;
-    animation: sway 6s ease-in-out infinite alternate;
-  }
-  .tree:before {
-    content: '';
-    position: absolute;
-    bottom: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 100px;
-    background: linear-gradient(to top, #547651 0%, #8db08b 100%);
-    border-radius: 20px 20px 0 0;
-  }
-
-  /* Plusieurs arbres avec variations */
-  .tree1 { left: 10%; animation-delay: 0s; }
-  .tree2 { left: 30%; height: 220px; animation-delay: 1.5s; }
-  .tree3 { left: 50%; height: 240px; animation-delay: 0.7s; }
-  .tree4 { left: 70%; height: 210px; animation-delay: 1.2s; }
-  .tree5 { left: 85%; height: 230px; animation-delay: 0.3s; }
-
-  @keyframes sway {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(5deg); }
-  }
-
-  /* Cerveau lumineux */
-  .brain {
     position: relative;
-    width: 180px; height: 180px;
-    background: radial-gradient(circle at center, #f8f0ff 0%, #bfa3ff 70%);
-    border-radius: 50% 50% 60% 60% / 70% 70% 60% 60%;
-    box-shadow:
-      0 0 50px 20px #bfa3ff88,
-      inset 0 0 40px 10px #d6baffcc;
-    animation: gentleGlow 4s ease-in-out infinite;
-    z-index: 10;
+    height: 450px;
+    background: linear-gradient(135deg, #c2a6f7, #f3e8ff);
+    border-radius: 20px;
+    box-shadow: 0 0 40px 5px #d7b9ff;
+    overflow: visible;
   }
-  @keyframes gentleGlow {
+
+  /* Cerveau réaliste et plus gros */
+  .brain-img {
+    width: 280px;
+    height: auto;
+    filter: drop-shadow(0 0 25px #bb9fff);
+    animation: pulseGlow 4s ease-in-out infinite;
+  }
+  @keyframes pulseGlow {
     0%, 100% {
-      box-shadow:
-        0 0 50px 20px #bfa3ff88,
-        inset 0 0 40px 10px #d6baffcc;
+      filter: drop-shadow(0 0 25px #bb9fff);
       transform: scale(1);
     }
     50% {
-      box-shadow:
-        0 0 70px 30px #d1afffff,
-        inset 0 0 50px 15px #e9c8ffdd;
+      filter: drop-shadow(0 0 40px #c4a9ff);
       transform: scale(1.05);
     }
   }
 
-  /* Enfants stylisés (ronds pastel) */
+  /* Enfants stylisés - disques pastel avec visage simple (CSS) */
   .children {
     position: absolute;
+    width: 400px;
+    height: 400px;
     top: 50%; left: 50%;
-    width: 320px; height: 320px;
-    margin-left: -160px; margin-top: -160px;
-    animation: rotate 40s linear infinite;
-    pointer-events: none;
+    margin-top: -200px;
+    margin-left: -200px;
+    animation: slowRotate 40s linear infinite;
   }
-  @keyframes rotate {
-    from { transform: rotate(0deg);}
-    to { transform: rotate(360deg);}
+  @keyframes slowRotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
   }
   .child {
     position: absolute;
     width: 60px; height: 60px;
-    background: #f4d9ff;
+    background: #f5d9ff;
     border-radius: 50%;
-    box-shadow: 0 0 10px 3px #cfa1ff;
+    box-shadow: 0 0 12px 3px #cca8ff;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
-    color: #6f4a86;
+    font-size: 28px;
+    color: #664a8a;
     user-select: none;
     animation: bounce 5s ease-in-out infinite;
   }
   @keyframes bounce {
-    0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(-15px);}
+    0%, 100% {transform: translateY(0);}
+    50% {transform: translateY(-15px);}
   }
-  .child:nth-child(1) { top: 5%; left: 50%; margin-left: -30px; animation-delay: 0s;}
-  .child:nth-child(2) { top: 50%; left: 95%; margin-top: -30px; animation-delay: 1s;}
-  .child:nth-child(3) { top: 95%; left: 50%; margin-left: -30px; animation-delay: 2s;}
-  .child:nth-child(4) { top: 50%; left: 5%; margin-top: -30px; animation-delay: 3s;}
-  .child:nth-child(5) { top: 25%; left: 25%; margin-left: -30px; animation-delay: 1.5s;}
-  .child:nth-child(6) { top: 75%; left: 75%; margin-left: -30px; animation-delay: 2.5s;}
+  .child:nth-child(1) { top: 5%; left: 50%; margin-left: -30px; animation-delay: 0s; }
+  .child:nth-child(2) { top: 50%; left: 95%; margin-top: -30px; animation-delay: 1s; }
+  .child:nth-child(3) { top: 95%; left: 50%; margin-left: -30px; animation-delay: 2s; }
+  .child:nth-child(4) { top: 50%; left: 5%; margin-top: -30px; animation-delay: 3s; }
+  .child:nth-child(5) { top: 25%; left: 25%; margin-left: -30px; animation-delay: 1.5s; }
+  .child:nth-child(6) { top: 75%; left: 75%; margin-left: -30px; animation-delay: 2.5s; }
 
-  /* Lucioles (points lumineux animés) */
-  .firefly {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #fff3a3;
-    border-radius: 50%;
-    box-shadow: 0 0 10px 4px #fff3a3;
-    animation: flicker 3s infinite ease-in-out alternate;
+  /* --- SECTIONS TEXTE --- */
+  p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    max-width: 800px;
   }
-  @keyframes flicker {
-    0%, 100% { opacity: 1;}
-    50% { opacity: 0.2;}
+
+  /* Section "Je veux lire" livre exemple */
+  .book {
+    background: #f5e6ffcc;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 12px #b899f7cc;
+    max-width: 600px;
+    margin: 15px 0;
   }
-  /* Positions aléatoires */
-  .firefly1 { top: 20%; left: 40%; animation-delay: 0s;}
-  .firefly2 { top: 30%; left: 60%; animation-delay: 1s;}
-  .firefly3 { top: 70%; left: 70%; animation-delay: 0.5s;}
-  .firefly4 { top: 60%; left: 20%; animation-delay: 1.5s;}
-  .firefly5 { top: 40%; left: 80%; animation-delay: 2s;}
+  .book h3 {
+    margin-top: 0;
+    color: #6b4ca6;
+  }
+
+  /* Section A propos */
+  .about {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    max-width: 900px;
+  }
+  .about img {
+    width: 180px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #c1a8ff;
+    object-fit: cover;
+  }
+  .about-text {
+    max-width: 650px;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #7a6ca7cc;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about {
+      flex-direction: column;
+      text-align: center;
+    }
+    .about img {
+      width: 140px;
+    }
+    .children {
+      width: 280px; height: 280px;
+      margin-left: -140px; margin-top: -140px;
+    }
+    .brain-img {
+      width: 220px;
+    }
+  }
 </style>
 </head>
 <body>
 
-<!-- Arbres -->
-<div class="tree tree1"></div>
-<div class="tree tree2"></div>
-<div class="tree tree3"></div>
-<div class="tree tree4"></div>
-<div class="tree tree5"></div>
+<header>
+  <h1>NeuroKiddo</h1>
+  <nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#cerveau">Les parties du cerveau</a>
+    <a href="#lire">Je veux lire</a>
+    <a href="#aventures">Aventures de Max & Mia</a>
+    <a href="#apropos">À propos</a>
+  </nav>
+</header>
 
-<!-- Cerveau lumineux -->
-<div class="brain" aria-label="Cerveau lumineux"></div>
+<main>
 
-<!-- Enfants qui tournent -->
-<div class="children" aria-label="Enfants autour du cerveau">
-  <div class="child">👧</div>
-  <div class="child">👦</div>
-  <div class="child">👧</div>
-  <div class="child">👦</div>
-  <div class="child">👧</div>
-  <div class="child">👦</div>
-</div>
+  <section id="accueil" class="accueil" aria-label="Accueil avec cerveau et enfants animés">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Human_brain_NIH.jpg/320px-Human_brain_NIH.jpg" alt="Image réaliste d'un cerveau humain" class="brain-img" />
+    <div class="children" aria-label="Enfants qui tournent autour du cerveau">
+      <div class="child">👧</div>
+      <div class="child">👦</div>
+      <div class="child">👧</div>
+      <div class="child">👦</div>
+      <div class="child">👧</div>
+      <div class="child">👦</div>
+    </div>
+  </section>
 
-<!-- Lucioles -->
-<div class="firefly firefly1"></div>
-<div class="firefly firefly2"></div>
-<div class="firefly firefly3"></div>
-<div class="firefly firefly4"></div>
-<div class="firefly firefly5"></div>
+  <section id="cerveau" aria-label="Les parties du cerveau">
+    <h2>Les parties du cerveau</h2>
+    <p>
+      Le cerveau est divisé en plusieurs parties qui travaillent ensemble pour nous permettre de penser, de ressentir et d'agir.
+      Par exemple, le cortex préfrontal aide à la prise de décisions, l’hippocampe joue un rôle important dans la mémoire, et le cervelet contrôle l'équilibre et la coordination.
+    </p>
+  </section>
+
+  <section id="lire" aria-label="Petits livres à lire">
+    <h2>Je veux lire</h2>
+    <div class="book">
+      <h3>Le voyage de Max dans le cerveau</h3>
+      <p>Max découvre comment les neurones communiquent entre eux grâce aux signaux électriques et chimiques. Une aventure incroyable pour comprendre la magie de notre cerveau!</p>
+    </div>
+    <div class="book">
+      <h3>Mia et les émotions</h3>
+      <p>Mia apprend à reconnaître et gérer ses émotions grâce à l’aide de son cerveau. Une histoire pleine de couleurs et de découvertes.</p>
+    </div>
+  </section>
+
+  <section id="aventures" aria-label="Les aventures de Max et Mia">
+    <h2>Les aventures de Max et Mia</h2>
+    <p>Max et Mia sont deux enfants curieux qui explorent ensemble le monde fascinant des neurosciences. Chaque aventure est une nouvelle découverte remplie de jeux, d’expériences, et d’histoires à raconter.</p>
+  </section>
+
+  <section id="apropos" aria-label="À propos de l'auteure">
+    <h2>À propos</h2>
+    <div class="about">
+      <img src="https://placekitten.com/300/300" alt="Photo d'Ashu" />
+      <div class="about-text">
+        <p>Je m'appelle Ashu, étudiante en neurosciences passionnée par le cerveau et son fonctionnement. Ce projet NeuroKiddo est né de mon envie de rendre la science accessible et amusante pour les enfants.</p>
+        <p>Ce qui m'a poussée ? La fascination pour la plasticité cérébrale et l'envie de partager cette magie avec le plus grand nombre.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2025 NeuroKiddo - Tous droits réservés
+</footer>
 
 </body>
 </html>
