@@ -1,11 +1,96 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>NeuroKids Test</title>
+<meta charset="UTF-8" />
+<title>NeuroKiddo</title>
+<style>
+  body {
+    margin: 0;
+    background: linear-gradient(135deg, #A1C4FD, #C2E9FB);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #333;
+    text-align: center;
+  }
+
+  header {
+    background: #6A9BFF;
+    padding: 20px 0;
+    color: white;
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 3px;
+  }
+
+  main {
+    padding: 40px 20px;
+  }
+
+  .brain {
+    margin: 0 auto 30px;
+    width: 150px;
+    height: 150px;
+    background: #FF6F91;
+    border-radius: 50% 50% 60% 60% / 70% 70% 60% 60%;
+    position: relative;
+    animation: pulse 2s infinite ease-in-out;
+    box-shadow: 0 0 20px #FF6F91;
+  }
+
+  /* Une petite "bosse" en haut à gauche */
+  .brain::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    width: 40px;
+    height: 50px;
+    background: #FF597B;
+    border-radius: 50% 50% 50% 50%;
+    box-shadow: 0 0 15px #FF597B;
+  }
+
+  /* Une bosse en haut à droite */
+  .brain::after {
+    content: "";
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    width: 50px;
+    height: 40px;
+    background: #FF597B;
+    border-radius: 50% 50% 50% 50%;
+    box-shadow: 0 0 15px #FF597B;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 20px #FF6F91;
+    }
+    50% {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px #FF6F91;
+    }
+  }
+
+  footer {
+    margin-top: 50px;
+    font-size: 0.9em;
+    color: #555;
+  }
+</style>
 </head>
 <body>
-  <h1>Bienvenue sur NeuroKids !</h1>
-  <p>Si tu vois ce texte, le site est bien en ligne.</p>
+
+<header>NeuroKiddo</header>
+
+<main>
+  <div class="brain" aria-label="Cerveau animé"></div>
+  <h2>Bienvenue sur NeuroKiddo !</h2>
+  <p>Le site pour découvrir le cerveau en s’amusant !</p>
+</main>
+
+<footer>© 2025 NeuroKiddo - Créé par Ashu</footer>
+
 </body>
 </html>
