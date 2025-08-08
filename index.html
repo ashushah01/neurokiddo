@@ -5,23 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>NeuroKiddo - Monde enchanté</title>
 <style>
-  /* Reset & style général */
   * {
     box-sizing: border-box;
   }
   body {
     margin: 0; padding: 0;
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    background: linear-gradient(135deg, #f0e6f6, #e6f2f5);
+    background: linear-gradient(135deg, #9ad1f0, #ffdc99);
     color: #3e4a3a;
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   a {
     text-decoration: none;
-    color: #6b4ca6;
+    color: #46237a;
   }
   header {
-    background: #d8c9f7cc;
+    background: #d6b3ffcc;
     backdrop-filter: saturate(180%) blur(10px);
     position: fixed;
     width: 100%;
@@ -31,12 +31,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 12px 30px;
-    box-shadow: 0 2px 8px rgba(107,76,166,0.3);
+    box-shadow: 0 2px 8px rgba(107,76,166,0.4);
   }
   header h1 {
     font-size: 1.8rem;
     margin: 0;
-    color: #4b2e83;
+    color: #46237a;
   }
   nav a {
     margin-left: 20px;
@@ -47,7 +47,6 @@
   nav a:hover {
     color: #9a73e6;
   }
-
   main {
     margin-top: 70px;
     max-width: 1200px;
@@ -55,7 +54,6 @@
     margin-right: auto;
     padding: 20px 15px 60px;
   }
-
   section {
     margin-bottom: 70px;
   }
@@ -67,47 +65,46 @@
     display: inline-block;
     padding-bottom: 6px;
   }
-
   /* --- SECTION ACCUEIL --- */
   .accueil {
+    position: relative;
+    height: 480px;
+    background: linear-gradient(135deg, #a4c8ff, #fff9cc);
+    border-radius: 20px;
+    box-shadow: 0 0 50px 10px #ffec82cc;
+    overflow: visible;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    height: 450px;
-    background: linear-gradient(135deg, #c2a6f7, #f3e8ff);
-    border-radius: 20px;
-    box-shadow: 0 0 40px 5px #d7b9ff;
-    overflow: visible;
   }
-
-  /* Cerveau réaliste et plus gros */
   .brain-img {
-    width: 280px;
+    width: 320px;
     height: auto;
-    filter: drop-shadow(0 0 25px #bb9fff);
+    filter: drop-shadow(0 0 30px #fff04c);
+    border-radius: 50%;
     animation: pulseGlow 4s ease-in-out infinite;
+    position: relative;
+    z-index: 20;
   }
   @keyframes pulseGlow {
     0%, 100% {
-      filter: drop-shadow(0 0 25px #bb9fff);
+      filter: drop-shadow(0 0 30px #fff04c);
       transform: scale(1);
     }
     50% {
-      filter: drop-shadow(0 0 40px #c4a9ff);
-      transform: scale(1.05);
+      filter: drop-shadow(0 0 60px #fff958);
+      transform: scale(1.1);
     }
   }
-
-  /* Enfants stylisés - disques pastel avec visage simple (CSS) */
   .children {
     position: absolute;
-    width: 400px;
-    height: 400px;
+    width: 420px;
+    height: 420px;
     top: 50%; left: 50%;
-    margin-top: -200px;
-    margin-left: -200px;
-    animation: slowRotate 40s linear infinite;
+    margin-top: -210px;
+    margin-left: -210px;
+    animation: slowRotate 60s linear infinite;
+    z-index: 10;
   }
   @keyframes slowRotate {
     from {transform: rotate(0deg);}
@@ -115,91 +112,76 @@
   }
   .child {
     position: absolute;
-    width: 60px; height: 60px;
-    background: #f5d9ff;
+    width: 70px; height: 70px;
+    background: #f9a2ff;
     border-radius: 50%;
-    box-shadow: 0 0 12px 3px #cca8ff;
+    box-shadow: 0 0 15px 5px #da77ff;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 28px;
-    color: #664a8a;
+    font-size: 32px;
+    color: #6f4a86;
     user-select: none;
     animation: bounce 5s ease-in-out infinite;
+    cursor: default;
   }
   @keyframes bounce {
     0%, 100% {transform: translateY(0);}
-    50% {transform: translateY(-15px);}
+    50% {transform: translateY(-18px);}
   }
-  .child:nth-child(1) { top: 5%; left: 50%; margin-left: -30px; animation-delay: 0s; }
-  .child:nth-child(2) { top: 50%; left: 95%; margin-top: -30px; animation-delay: 1s; }
-  .child:nth-child(3) { top: 95%; left: 50%; margin-left: -30px; animation-delay: 2s; }
-  .child:nth-child(4) { top: 50%; left: 5%; margin-top: -30px; animation-delay: 3s; }
-  .child:nth-child(5) { top: 25%; left: 25%; margin-left: -30px; animation-delay: 1.5s; }
-  .child:nth-child(6) { top: 75%; left: 75%; margin-left: -30px; animation-delay: 2.5s; }
+  /* Position enfants */
+  .child:nth-child(1) { top: 4%; left: 50%; margin-left: -35px; animation-delay: 0s; }
+  .child:nth-child(2) { top: 50%; left: 95%; margin-top: -35px; animation-delay: 1.2s; }
+  .child:nth-child(3) { top: 95%; left: 50%; margin-left: -35px; animation-delay: 2.1s; }
+  .child:nth-child(4) { top: 50%; left: 5%; margin-top: -35px; animation-delay: 3.3s; }
+  .child:nth-child(5) { top: 28%; left: 25%; margin-left: -35px; animation-delay: 1.6s; }
+  .child:nth-child(6) { top: 72%; left: 75%; margin-left: -35px; animation-delay: 2.9s; }
 
-  /* --- SECTIONS TEXTE --- */
-  p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    max-width: 800px;
-  }
-
-  /* Section "Je veux lire" livre exemple */
-  .book {
-    background: #f5e6ffcc;
+  /* Bulles des enfants */
+  .bubble {
+    position: absolute;
+    background: #fff1b8;
     border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 0 12px #b899f7cc;
-    max-width: 600px;
-    margin: 15px 0;
-  }
-  .book h3 {
-    margin-top: 0;
-    color: #6b4ca6;
-  }
-
-  /* Section A propos */
-  .about {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    max-width: 900px;
-  }
-  .about img {
-    width: 180px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 0 15px #c1a8ff;
-    object-fit: cover;
-  }
-  .about-text {
-    max-width: 650px;
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 20px;
+    padding: 10px 15px;
+    box-shadow: 0 2px 10px #f7e9aa;
     font-size: 0.9rem;
-    color: #7a6ca7cc;
+    color: #5a3b00;
+    max-width: 140px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
   }
+  .child:hover .bubble {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Texte bulles exemple */
+  .bubble1 { top: -60px; left: 80px; }
+  .bubble2 { top: 10px; left: -150px; }
+  .bubble3 { top: -70px; left: 80px; }
+  .bubble4 { top: 10px; left: -150px; }
+  .bubble5 { top: -60px; left: 80px; }
+  .bubble6 { top: 10px; left: -150px; }
+
+  /* Section textes basiques (cerveau, lire, aventures, apropos) restent à ajuster */
 
   /* Responsive */
   @media (max-width: 768px) {
-    .about {
-      flex-direction: column;
-      text-align: center;
-    }
-    .about img {
-      width: 140px;
+    .brain-img {
+      width: 240px;
     }
     .children {
       width: 280px; height: 280px;
       margin-left: -140px; margin-top: -140px;
     }
-    .brain-img {
-      width: 220px;
+    .child {
+      width: 50px; height: 50px;
+      font-size: 22px;
+    }
+    .bubble {
+      max-width: 120px;
+      font-size: 0.8rem;
     }
   }
 </style>
@@ -222,38 +204,97 @@
   <section id="accueil" class="accueil" aria-label="Accueil avec cerveau et enfants animés">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Human_brain_NIH.jpg/320px-Human_brain_NIH.jpg" alt="Image réaliste d'un cerveau humain" class="brain-img" />
     <div class="children" aria-label="Enfants qui tournent autour du cerveau">
-      <div class="child">👧</div>
-      <div class="child">👦</div>
-      <div class="child">👧</div>
-      <div class="child">👦</div>
-      <div class="child">👧</div>
-      <div class="child">👦</div>
+      <div class="child" tabindex="0" aria-describedby="bubble1">
+        👧
+        <div class="bubble bubble1" id="bubble1">Je découvre le cerveau!</div>
+      </div>
+      <div class="child" tabindex="0" aria-describedby="bubble2">
+        👦
+        <div class="bubble bubble2" id="bubble2">J'adore apprendre!</div>
+      </div>
+      <div class="child" tabindex="0" aria-describedby="bubble3">
+        👧
+        <div class="bubble bubble3" id="bubble3">Les émotions, c'est cool!</div>
+      </div>
+      <div class="child" tabindex="0" aria-describedby="bubble4">
+        👦
+        <div class="bubble bubble4" id="bubble4">On joue ensemble!</div>
+      </div>
+      <div class="child" tabindex="0" aria-describedby="bubble5">
+        👧
+        <div class="bubble bubble5" id="bubble5">J'aime les aventures!</div>
+      </div>
+      <div class="child" tabindex="0" aria-describedby="bubble6">
+        👦
+        <div class="bubble bubble6" id="bubble6">Et toi?</div>
+      </div>
     </div>
   </section>
 
+  <!-- Les autres sections à venir -->
+
+</main>
+
+<footer>
+  &copy; 2025 NeuroKiddo - Tous droits réservés
+</footer>
+
+</body>
+</html>
   <section id="cerveau" aria-label="Les parties du cerveau">
     <h2>Les parties du cerveau</h2>
-    <p>
-      Le cerveau est divisé en plusieurs parties qui travaillent ensemble pour nous permettre de penser, de ressentir et d'agir.
-      Par exemple, le cortex préfrontal aide à la prise de décisions, l’hippocampe joue un rôle important dans la mémoire, et le cervelet contrôle l'équilibre et la coordination.
-    </p>
+    
+    <article style="margin-bottom:30px;">
+      <h3>Cortex préfrontal</h3>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Brain_front_lateral_view.png/320px-Brain_front_lateral_view.png" alt="Cortex préfrontal" style="width:320px; max-width:100%; border-radius:15px; box-shadow:0 0 10px #a27effcc;"/>
+      <p>Le cortex préfrontal est la partie du cerveau qui aide à prendre des décisions, planifier, et contrôler ses émotions.</p>
+    </article>
+    
+    <article style="margin-bottom:30px;">
+      <h3>Hippocampe</h3>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Hippocampus_3d.png/320px-Hippocampus_3d.png" alt="Hippocampe" style="width:320px; max-width:100%; border-radius:15px; box-shadow:0 0 10px #a27effcc;"/>
+      <p>L'hippocampe joue un rôle important dans la mémoire et dans l’apprentissage.</p>
+    </article>
+
+    <article style="margin-bottom:30px;">
+      <h3>Cervelet</h3>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Cerebellum_-_lateral_view_-_dissection.png/320px-Cerebellum_-_lateral_view_-_dissection.png" alt="Cervelet" style="width:320px; max-width:100%; border-radius:15px; box-shadow:0 0 10px #a27effcc;"/>
+      <p>Le cervelet aide à l’équilibre, la coordination des mouvements et la précision.</p>
+    </article>
+
+    <article style="margin-bottom:30px;">
+      <h3>Tronc cérébral</h3>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Gray709_tronc_c%C3%A9r%C3%A9bral.svg/320px-Gray709_tronc_c%C3%A9r%C3%A9bral.svg.png" alt="Tronc cérébral" style="width:320px; max-width:100%; border-radius:15px; box-shadow:0 0 10px #a27effcc;"/>
+      <p>Le tronc cérébral contrôle les fonctions vitales comme la respiration et le rythme cardiaque.</p>
+    </article>
+  </section>
+  
+  <section id="lire" aria-label="Je veux lire">
+    <h2>Je veux lire</h2>
+    
+    <div class="book" style="cursor:pointer;" onclick="openStory('story1')">
+      <h3>Le voyage de Max dans le cerveau</h3>
+      <p>Découvre comment Max explore les neurones et leurs messages magiques !</p>
+    </div>
+    
+    <div class="book" style="cursor:pointer;" onclick="openStory('story2')">
+      <h3>Mia et les émotions</h3>
+      <p>Mia apprend à comprendre ses émotions grâce à son cerveau fantastique.</p>
+    </div>
   </section>
 
-  <section id="lire" aria-label="Petits livres à lire">
-    <h2>Je veux lire</h2>
-    <div class="book">
-      <h3>Le voyage de Max dans le cerveau</h3>
-      <p>Max découvre comment les neurones communiquent entre eux grâce aux signaux électriques et chimiques. Une aventure incroyable pour comprendre la magie de notre cerveau!</p>
+  <!-- Popup modal pour les histoires -->
+  <div id="storyModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:200;">
+    <div style="background:#fff; border-radius:15px; max-width:600px; max-height:80vh; overflow-y:auto; padding:20px; position:relative;">
+      <button onclick="closeStory()" aria-label="Fermer l'histoire" style="position:absolute; top:10px; right:15px; font-size:20px; background:none; border:none; cursor:pointer;">✖</button>
+      <div id="storyContent" style="font-size:1.1rem; line-height:1.5; color:#333;"></div>
     </div>
-    <div class="book">
-      <h3>Mia et les émotions</h3>
-      <p>Mia apprend à reconnaître et gérer ses émotions grâce à l’aide de son cerveau. Une histoire pleine de couleurs et de découvertes.</p>
-    </div>
-  </section>
+  </div>
 
   <section id="aventures" aria-label="Les aventures de Max et Mia">
-    <h2>Les aventures de Max et Mia</h2>
-    <p>Max et Mia sont deux enfants curieux qui explorent ensemble le monde fascinant des neurosciences. Chaque aventure est une nouvelle découverte remplie de jeux, d’expériences, et d’histoires à raconter.</p>
+    <h2>Les aventures de Max & Mia</h2>
+    <img src="https://placekitten.com/400/250" alt="Photo de Max et Mia" style="width:400px; max-width:100%; border-radius:15px; box-shadow:0 0 10px #b899f7cc; margin-bottom:15px;">
+    <p>Max et Mia sont deux enfants curieux qui explorent ensemble le monde fascinant des neurosciences. Chaque aventure est remplie de jeux, d’expériences, et d’histoires passionnantes à découvrir.</p>
   </section>
 
   <section id="apropos" aria-label="À propos de l'auteure">
@@ -267,11 +308,31 @@
     </div>
   </section>
 
-</main>
-
-<footer>
-  &copy; 2025 NeuroKiddo - Tous droits réservés
-</footer>
-
-</body>
-</html>
+<script>
+  const stories = {
+    story1: `
+      <h3>Le voyage de Max dans le cerveau</h3>
+      <p>Max est un petit explorateur courageux qui découvre le cerveau humain. Il apprend que les neurones envoient des signaux électriques et chimiques très vite pour nous permettre de penser et de bouger.</p>
+      <p>Au fil de son voyage, Max rencontre différentes parties du cerveau qui l'aident à comprendre comment on apprend, comment on ressent des émotions, et comment on contrôle nos mouvements.</p>
+      <p>Une aventure incroyable pleine de découvertes fascinantes !</p>
+    `,
+    story2: `
+      <h3>Mia et les émotions</h3>
+      <p>Mia est une enfant qui ressent beaucoup d’émotions différentes chaque jour. Grâce à l’aide de son cerveau, elle apprend à reconnaître la joie, la tristesse, la colère et la peur.</p>
+      <p>Avec l’aide de ses amis neurones, Mia découvre comment gérer ses émotions et les utiliser pour mieux comprendre les autres.</p>
+      <p>Une histoire pleine de couleurs et d’apprentissage sur les émotions.</p>
+    `
+  };
+  function openStory(id) {
+    const modal = document.getElementById('storyModal');
+    const content = document.getElementById('storyContent');
+    content.innerHTML = stories[id] || "<p>Histoire non trouvée.</p>";
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // empêche scroll arrière
+  }
+  function closeStory() {
+    const modal = document.getElementById('storyModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+</script>
