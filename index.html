@@ -5,106 +5,111 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>NeuroKiddo - Monde enchanté</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
   * {
     box-sizing: border-box;
   }
   body {
     margin: 0; padding: 0;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    background: linear-gradient(135deg, #9ad1f0, #ffdc99);
-    color: #3e4a3a;
+    font-family: 'Comic Neue', cursive, sans-serif;
+    background: linear-gradient(135deg, #b3e5fc 0%, #fffde7 100%);
+    color: #3a3a3a;
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
   a {
     text-decoration: none;
-    color: #46237a;
+    color: #5b3a96;
   }
   header {
-    background: #d6b3ffcc;
+    background: #a085d6cc;
     backdrop-filter: saturate(180%) blur(10px);
     position: fixed;
     width: 100%;
     top: 0; left: 0;
-    z-index: 100;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 30px;
-    box-shadow: 0 2px 8px rgba(107,76,166,0.4);
+    padding: 14px 30px;
+    box-shadow: 0 3px 8px rgba(90,70,150,0.4);
   }
   header h1 {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     margin: 0;
-    color: #46237a;
+    color: #3f2172;
   }
   nav a {
-    margin-left: 20px;
-    font-weight: bold;
-    font-size: 1rem;
+    margin-left: 25px;
+    font-weight: 700;
+    font-size: 1.1rem;
     transition: color 0.3s ease;
   }
-  nav a:hover {
-    color: #9a73e6;
+  nav a:hover,
+  nav a:focus {
+    color: #815cd1;
+    outline: none;
   }
   main {
-    margin-top: 70px;
+    margin-top: 75px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding: 20px 15px 60px;
+    padding: 20px 25px 60px;
   }
   section {
     margin-bottom: 70px;
   }
   section h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: 2.4rem;
+    margin-bottom: 25px;
     color: #5b3a96;
-    border-bottom: 3px solid #9a73e6;
+    border-bottom: 4px solid #a085d6;
     display: inline-block;
-    padding-bottom: 6px;
+    padding-bottom: 8px;
   }
   /* --- SECTION ACCUEIL --- */
   .accueil {
     position: relative;
-    height: 480px;
-    background: linear-gradient(135deg, #a4c8ff, #fff9cc);
+    height: 520px;
+    background: linear-gradient(135deg, #ffe0ff, #f0f9ff);
     border-radius: 20px;
-    box-shadow: 0 0 50px 10px #ffec82cc;
+    box-shadow: 0 0 70px 20px #f9c4ffcc;
     overflow: visible;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .brain-img {
-    width: 320px;
-    height: auto;
-    filter: drop-shadow(0 0 30px #fff04c);
-    border-radius: 50%;
-    animation: pulseGlow 4s ease-in-out infinite;
+  /* Cerveau SVG container */
+  .brain-container {
     position: relative;
-    z-index: 20;
+    width: 380px;
+    height: 380px;
+    filter: drop-shadow(0 0 30px #fff47c);
+    animation: pulseGlow 4s ease-in-out infinite;
   }
   @keyframes pulseGlow {
     0%, 100% {
-      filter: drop-shadow(0 0 30px #fff04c);
+      filter: drop-shadow(0 0 25px #fff47c);
       transform: scale(1);
     }
     50% {
-      filter: drop-shadow(0 0 60px #fff958);
-      transform: scale(1.1);
+      filter: drop-shadow(0 0 60px #fffda6);
+      transform: scale(1.07);
     }
   }
+  /* Enfants autour */
   .children {
     position: absolute;
-    width: 420px;
-    height: 420px;
+    width: 460px;
+    height: 460px;
     top: 50%; left: 50%;
-    margin-top: -210px;
-    margin-left: -210px;
+    margin-top: -230px;
+    margin-left: -230px;
     animation: slowRotate 60s linear infinite;
-    z-index: 10;
+    pointer-events: none;
+    z-index: 2;
   }
   @keyframes slowRotate {
     from {transform: rotate(0deg);}
@@ -112,76 +117,234 @@
   }
   .child {
     position: absolute;
-    width: 70px; height: 70px;
-    background: #f9a2ff;
+    width: 90px; height: 90px;
+    background: #ffd0ff;
     border-radius: 50%;
-    box-shadow: 0 0 15px 5px #da77ff;
+    box-shadow: 0 0 15px 6px #e79eff;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 32px;
-    color: #6f4a86;
+    font-size: 0; /* SVG inside */
     user-select: none;
-    animation: bounce 5s ease-in-out infinite;
     cursor: default;
+    transition: transform 0.3s ease;
   }
-  @keyframes bounce {
-    0%, 100% {transform: translateY(0);}
-    50% {transform: translateY(-18px);}
+  .child:hover, .child:focus {
+    transform: scale(1.15);
+    outline: none;
   }
-  /* Position enfants */
-  .child:nth-child(1) { top: 4%; left: 50%; margin-left: -35px; animation-delay: 0s; }
-  .child:nth-child(2) { top: 50%; left: 95%; margin-top: -35px; animation-delay: 1.2s; }
-  .child:nth-child(3) { top: 95%; left: 50%; margin-left: -35px; animation-delay: 2.1s; }
-  .child:nth-child(4) { top: 50%; left: 5%; margin-top: -35px; animation-delay: 3.3s; }
-  .child:nth-child(5) { top: 28%; left: 25%; margin-left: -35px; animation-delay: 1.6s; }
-  .child:nth-child(6) { top: 72%; left: 75%; margin-left: -35px; animation-delay: 2.9s; }
+  /* Position enfants (6) */
+  .child:nth-child(1) { top: 3%; left: 50%; margin-left: -45px; }
+  .child:nth-child(2) { top: 50%; left: 95%; margin-top: -45px; }
+  .child:nth-child(3) { top: 95%; left: 50%; margin-left: -45px; }
+  .child:nth-child(4) { top: 50%; left: 5%; margin-top: -45px; }
+  .child:nth-child(5) { top: 28%; left: 22%; margin-left: -45px; }
+  .child:nth-child(6) { top: 72%; left: 78%; margin-left: -45px; }
 
-  /* Bulles des enfants */
+  /* Bulles d'émotion */
   .bubble {
     position: absolute;
-    background: #fff1b8;
-    border-radius: 15px;
-    padding: 10px 15px;
-    box-shadow: 0 2px 10px #f7e9aa;
-    font-size: 0.9rem;
+    background: #fff4b3;
+    border-radius: 18px;
+    padding: 12px 18px;
+    box-shadow: 0 3px 12px #f0db79;
+    font-size: 1rem;
     color: #5a3b00;
-    max-width: 140px;
+    max-width: 170px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.35s ease;
+    user-select: text;
+    font-weight: 600;
   }
-  .child:hover .bubble {
+  .child:hover .bubble,
+  .child:focus .bubble {
     opacity: 1;
     pointer-events: auto;
   }
 
-  /* Texte bulles exemple */
-  .bubble1 { top: -60px; left: 80px; }
-  .bubble2 { top: 10px; left: -150px; }
-  .bubble3 { top: -70px; left: 80px; }
-  .bubble4 { top: 10px; left: -150px; }
-  .bubble5 { top: -60px; left: 80px; }
-  .bubble6 { top: 10px; left: -150px; }
+  /* Position bulles enfants */
+  .bubble1 { top: -75px; left: 100px; }
+  .bubble2 { top: 15px; left: -180px; }
+  .bubble3 { top: -75px; left: 100px; }
+  .bubble4 { top: 15px; left: -180px; }
+  .bubble5 { top: -75px; left: 100px; }
+  .bubble6 { top: 15px; left: -180px; }
 
-  /* Section textes basiques (cerveau, lire, aventures, apropos) restent à ajuster */
+  /* Section "Les parties du cerveau" */
+  #cerveau article {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: #f6e9ffcc;
+    border-radius: 15px;
+    padding: 18px 22px;
+    box-shadow: 0 0 15px #c3a8ff88;
+    margin-bottom: 35px;
+  }
+  #cerveau article img {
+    width: 140px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #b79effcc;
+  }
+  #cerveau article div {
+    flex: 1;
+    font-size: 1.15rem;
+    color: #4a3a72;
+  }
+
+  /* Section "Je veux lire" */
+  #lire .book {
+    background: #ffccffcc;
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 0 15px #db7be3cc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #lire .book:hover,
+  #lire .book:focus {
+    background-color: #e3a5e6cc;
+    outline: none;
+  }
+  #lire .book h3 {
+    margin-top: 0;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #682d8e;
+  }
+  #lire .book p {
+    margin-bottom: 0;
+    font-style: italic;
+    color: #502a70;
+  }
+
+  /* Modal d'histoire */
+  #storyModal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right:0; bottom:0;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 9000;
+  }
+  #storyModal.active {
+    display: flex;
+  }
+  #storyContent {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 650px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 25px 35px;
+    box-shadow: 0 0 30px #9679e0bb;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #443366;
+    position: relative;
+  }
+  #storyContent h3 {
+    margin-top: 0;
+    color: #552288;
+  }
+  #storyCloseBtn {
+    position: absolute;
+    top: 15px; right: 20px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: #552288;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  #storyCloseBtn:hover,
+  #storyCloseBtn:focus {
+    color: #aa66ff;
+    outline: none;
+  }
+
+  /* Section Aventures */
+  #aventures img {
+    width: 400px;
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 30px #b89affcc;
+    margin-bottom: 18px;
+  }
+  #aventures p {
+    font-size: 1.1rem;
+    color: #563a88;
+  }
+
+  /* Section À propos */
+  #apropos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    align-items: center;
+  }
+  #apropos img {
+    width: 280px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px #a889ffcc;
+  }
+  .about-text {
+    flex: 1;
+    font-size: 1.2rem;
+    color: #5e4a9e;
+    line-height: 1.5;
+  }
 
   /* Responsive */
-  @media (max-width: 768px) {
-    .brain-img {
-      width: 240px;
+  @media (max-width: 850px) {
+    #cerveau article {
+      flex-direction: column;
+      text-align: center;
     }
-    .children {
-      width: 280px; height: 280px;
-      margin-left: -140px; margin-top: -140px;
+    #cerveau article img {
+      width: 220px;
+      margin-bottom: 12px;
+    }
+    #apropos {
+      flex-direction: column;
+      text-align: center;
+    }
+    #apropos img {
+      width: 220px;
+    }
+  }
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 1.4rem;
+    }
+    nav a {
+      font-size: 0.9rem;
+      margin-left: 15px;
     }
     .child {
-      width: 50px; height: 50px;
-      font-size: 22px;
+      width: 65px;
+      height: 65px;
     }
-    .bubble {
-      max-width: 120px;
-      font-size: 0.8rem;
+    .children {
+      width: 320px;
+      height: 320px;
+      margin-top: -160px;
+      margin-left: -160px;
+    }
+    .brain-container {
+      width: 260px;
+      height: 260px;
+    }
+    #lire .book {
+      font-size: 0.95rem;
+      padding: 15px;
+    }
+    #aventures img {
+      width: 100%;
+      height: auto;
     }
   }
 </style>
@@ -201,123 +364,188 @@
 
 <main>
 
+  <!-- Accueil avec cerveau et enfants animés -->
   <section id="accueil" class="accueil" aria-label="Accueil avec cerveau et enfants animés">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Human_brain_NIH.jpg/320px-Human_brain_NIH.jpg" alt="Image réaliste d'un cerveau humain" class="brain-img" />
+    <div class="brain-container" aria-label="Cerveau illuminé au centre">
+      <!-- SVG cerveau stylisé, simplifié et pastel -->
+      <svg viewBox="0 0 280 280" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" >
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fff47c" stop-opacity="0.6" />
+            <stop offset="100%" stop-color="#ffd46f" stop-opacity="0" />
+          </radialGradient>
+          <filter id="blurGlow" x="-40%" y="-40%" width="180%" height="180%" >
+            <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#ffec71" flood-opacity="0.8"/>
+          </filter>
+        </defs>
+        <circle cx="140" cy="140" r="120" fill="url(#glow)" />
+        <path fill="#ffcae6" stroke="#d68ccd" stroke-width="4" filter="url(#blurGlow)"
+          d="M70,70 q30,-30 60,0 q40,20 40,80 q0,60 -60,80 q-40,-20 -40,-80 q0,-40 20,-60 z"/>
+        <path fill="#fdd4f0" stroke="#d68ccd" stroke-width="3"
+          d="M100 80 q20 -20 50 10 q40 25 20 75 q-15 50 -55 55 q-30 0 -40 -45 q-10 -45 25 -95 z"/>
+        <path fill="#f5a3d7" stroke="#c47ea9" stroke-width="2"
+          d="M130 110 q15 -10 20 15 q0 35 -15 40 q-30 0 -20 -35 q5 -15 15 -20 z"/>
+      </svg>
+    </div>
+
+    <!-- Enfants autour avec dessins SVG -->
     <div class="children" aria-label="Enfants qui tournent autour du cerveau">
+      <!-- Child 1 -->
       <div class="child" tabindex="0" aria-describedby="bubble1">
-        👧
+        <svg width="60" height="60" viewBox="0 0 64 64" aria-hidden="true" >
+          <circle cx="32" cy="32" r="30" fill="#fcd5e5" />
+          <circle cx="22" cy="24" r="5" fill="#5a3b00" />
+          <circle cx="42" cy="24" r="5" fill="#5a3b00" />
+          <path d="M18 42 q14 12 28 0" stroke="#5a3b00" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="32" cy="32" r="28" fill="none" stroke="#e57fc7" stroke-width="3"/>
+        </svg>
         <div class="bubble bubble1" id="bubble1">Je découvre le cerveau!</div>
       </div>
+      <!-- Child 2 -->
       <div class="child" tabindex="0" aria-describedby="bubble2">
-        👦
+        <svg width="60" height="60" viewBox="0 0 64 64" aria-hidden="true" >
+          <circle cx="32" cy="32" r="30" fill="#e2c2ff" />
+          <circle cx="21" cy="24" r="6" fill="#3a2a6d" />
+          <circle cx="43" cy="24" r="6" fill="#3a2a6d" />
+          <path d="M19 40 q12 10 26 0" stroke="#3a2a6d" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="32" cy="32" r="28" fill="none" stroke="#a98fff" stroke-width="3"/>
+        </svg>
         <div class="bubble bubble2" id="bubble2">J'adore apprendre!</div>
       </div>
+      <!-- Child 3 -->
       <div class="child" tabindex="0" aria-describedby="bubble3">
-        👧
+        <svg width="60" height="60" viewBox="0 0 64 64" aria-hidden="true" >
+          <circle cx="32" cy="32" r="30" fill="#f9d9f9" />
+          <circle cx="22" cy="22" r="5" fill="#6e3a69" />
+          <circle cx="42" cy="22" r="5" fill="#6e3a69" />
+          <path d="M18 45 q14 14 28 0" stroke="#6e3a69" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="32" cy="32" r="28" fill="none" stroke="#d27fe8" stroke-width="3"/>
+        </svg>
         <div class="bubble bubble3" id="bubble3">Les émotions, c'est cool!</div>
       </div>
+      <!-- Child 4 -->
       <div class="child" tabindex="0" aria-describedby="bubble4">
-        👦
-        <div class="bubble bubble4" id="bubble4">On joue ensemble!</div>
+        <svg width="60" height="60" viewBox="0 0 64 64" aria-hidden="true" >
+          <circle cx="32" cy="32" r="30" fill="#fff6cb" />
+          <circle cx="21" cy="24" r="5" fill="#756733" />
+          <circle cx="43" cy="24" r="5" fill="#756733" />
+          <path d="M19 40 q12 10 26 0" stroke="#756733" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="32" cy="32" r="28" fill="none" stroke="#c8b96a" stroke-width="3"/>
+        </svg>
+        <div class="bubble bubble4" id="bubble4">Je rêve de découvertes!</div>
       </div>
+      <!-- Child 5 -->
       <div class="child" tabindex="0" aria-describedby="bubble5">
-        👧
-        <div class="bubble bubble5" id="bubble5">J'aime les aventures!</div>
+        <svg width="60" height="60" viewBox="0 0 64 64" aria-hidden="true" >
+          <circle cx="32" cy="32" r="30" fill="#a2e2ff" />
+          <circle cx="21" cy="23" r="6" fill="#2372a3" />
+          <circle cx="43" cy="23" r="6" fill="#2372a3" />
+          <path d="M19 42 q14 13 26 0" stroke="#2372a3" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="32" cy="32" r="28" fill="none" stroke="#71c4ef" stroke-width="3"/>
+        </svg>
+        <div class="bubble bubble5" id="bubble5">Je suis curieux.se!</div>
       </div>
+      <!-- Child 6 -->
       <div class="child" tabindex="0" aria-describedby="bubble6">
-        👦
-        <div class="bubble bubble6" id="bubble6">Et toi?</div>
+        <svg width="60" height="60" viewBox="0 0 64 64" aria-hidden="true" >
+          <circle cx="32" cy="32" r="30" fill="#d6b6ff" />
+          <circle cx="21" cy="24" r="6" fill="#6c47a0" />
+          <circle cx="43" cy="24" r="6" fill="#6c47a0" />
+          <path d="M19 40 q12 10 26 0" stroke="#6c47a0" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="32" cy="32" r="28" fill="none" stroke="#9e7ef5" stroke-width="3"/>
+        </svg>
+        <div class="bubble bubble6" id="bubble6">Le cerveau est magique!</div>
       </div>
     </div>
   </section>
 
-  <!-- Les autres sections à venir -->
+  <!-- Sections suivantes -->
 
-</main>
-
-<footer>
-  &copy; 2025 NeuroKiddo - Tous droits réservés
-</footer>
-
-</body>
-</html>
   <section id="cerveau" aria-label="Les parties du cerveau">
     <h2>Les parties du cerveau</h2>
     
-    <article style="margin-bottom:30px;">
-      <h3>Cortex préfrontal</h3>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Brain_front_lateral_view.png/320px-Brain_front_lateral_view.png" alt="Cortex préfrontal" style="width:320px; max-width:100%; border-radius:15px; box-shadow:0 0 10px #a27effcc;"/>
-      <p>Le cortex préfrontal est la partie du cerveau qui aide à prendre des décisions, planifier, et contrôler ses émotions.</p>
+    <article>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Brain_front_lateral_view.png/320px-Brain_front_lateral_view.png" alt="Cortex préfrontal" />
+      <div>
+        <h3>Cortex préfrontal</h3>
+        <p>Le cortex préfrontal est la partie du cerveau qui aide à prendre des décisions, planifier, et contrôler ses émotions.</p>
+      </div>
     </article>
     
-    <article style="margin-bottom:30px;">
-      <h3>Hippocampe</h3>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Hippocampus_3d.png/320px-Hippocampus_3d.png" alt="Hippocampe" style="width:320px; max-width:100%; border-radius:15px; box-shadow:0 0 10px #a27effcc;"/>
-      <p>L'hippocampe joue un rôle important dans la mémoire et dans l’apprentissage.</p>
+    <article>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Hippocampus_3d.png/320px-Hippocampus_3d.png" alt="Hippocampe" />
+      <div>
+        <h3>Hippocampe</h3>
+        <p>L'hippocampe joue un rôle important dans la mémoire et dans l’apprentissage.</p>
+      </div>
     </article>
 
-    <article style="margin-bottom:30px;">
-      <h3>Cervelet</h3>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Cerebellum_-_lateral_view_-_dissection.png/320px-Cerebellum_-_lateral_view_-_dissection.png" alt="Cervelet" style="width:320px; max-width:100%; border-radius:15px; box-shadow:0 0 10px #a27effcc;"/>
-      <p>Le cervelet aide à l’équilibre, la coordination des mouvements et la précision.</p>
+    <article>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Cerebellum_-_lateral_view_-_dissection.png/320px-Cerebellum_-_lateral_view_-_dissection.png" alt="Cervelet" />
+      <div>
+        <h3>Cervelet</h3>
+        <p>Le cervelet aide à l’équilibre, la coordination des mouvements et la précision.</p>
+      </div>
     </article>
 
-    <article style="margin-bottom:30px;">
-      <h3>Tronc cérébral</h3>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Gray709_tronc_c%C3%A9r%C3%A9bral.svg/320px-Gray709_tronc_c%C3%A9r%C3%A9bral.svg.png" alt="Tronc cérébral" style="width:320px; max-width:100%; border-radius:15px; box-shadow:0 0 10px #a27effcc;"/>
-      <p>Le tronc cérébral contrôle les fonctions vitales comme la respiration et le rythme cardiaque.</p>
+    <article>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Gray709_tronc_c%C3%A9r%C3%A9bral.svg/320px-Gray709_tronc_c%C3%A9r%C3%A9bral.svg.png" alt="Tronc cérébral" />
+      <div>
+        <h3>Tronc cérébral</h3>
+        <p>Le tronc cérébral contrôle les fonctions vitales comme la respiration et le rythme cardiaque.</p>
+      </div>
     </article>
   </section>
   
   <section id="lire" aria-label="Je veux lire">
     <h2>Je veux lire</h2>
     
-    <div class="book" style="cursor:pointer;" onclick="openStory('story1')">
+    <div class="book" tabindex="0" role="button" aria-pressed="false" onclick="openStory('story1')" onkeypress="if(event.key==='Enter'){openStory('story1')}">
       <h3>Le voyage de Max dans le cerveau</h3>
       <p>Découvre comment Max explore les neurones et leurs messages magiques !</p>
     </div>
     
-    <div class="book" style="cursor:pointer;" onclick="openStory('story2')">
+    <div class="book" tabindex="0" role="button" aria-pressed="false" onclick="openStory('story2')" onkeypress="if(event.key==='Enter'){openStory('story2')}">
       <h3>Mia et les émotions</h3>
       <p>Mia apprend à comprendre ses émotions grâce à son cerveau fantastique.</p>
     </div>
   </section>
 
   <!-- Popup modal pour les histoires -->
-  <div id="storyModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:200;">
-    <div style="background:#fff; border-radius:15px; max-width:600px; max-height:80vh; overflow-y:auto; padding:20px; position:relative;">
-      <button onclick="closeStory()" aria-label="Fermer l'histoire" style="position:absolute; top:10px; right:15px; font-size:20px; background:none; border:none; cursor:pointer;">✖</button>
-      <div id="storyContent" style="font-size:1.1rem; line-height:1.5; color:#333;"></div>
+  <div id="storyModal" role="dialog" aria-modal="true" aria-labelledby="storyTitle" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:9000;">
+    <div id="storyContent" style="background:#fff; border-radius:15px; max-width:600px; max-height:80vh; overflow-y:auto; padding:25px 30px; position:relative; color:#3a306d; font-family: 'Comic Neue', cursive;">
+      <button id="storyCloseBtn" aria-label="Fermer l'histoire" onclick="closeStory()">✖</button>
     </div>
   </div>
 
   <section id="aventures" aria-label="Les aventures de Max et Mia">
     <h2>Les aventures de Max & Mia</h2>
-    <img src="https://placekitten.com/400/250" alt="Photo de Max et Mia" style="width:400px; max-width:100%; border-radius:15px; box-shadow:0 0 10px #b899f7cc; margin-bottom:15px;">
+    <img src="https://placekitten.com/400/250" alt="Photo de Max et Mia" />
     <p>Max et Mia sont deux enfants curieux qui explorent ensemble le monde fascinant des neurosciences. Chaque aventure est remplie de jeux, d’expériences, et d’histoires passionnantes à découvrir.</p>
   </section>
 
   <section id="apropos" aria-label="À propos de l'auteure">
     <h2>À propos</h2>
-    <div class="about">
-      <img src="https://placekitten.com/300/300" alt="Photo d'Ashu" />
-      <div class="about-text">
+    <div style="display:flex; flex-wrap:wrap; gap:25px; align-items:center;">
+      <img src="https://placekitten.com/300/300" alt="Photo d'Ashu" style="border-radius:15px; box-shadow: 0 0 20px #a685d6cc; width:280px;"/>
+      <div style="flex:1; font-size:1.2rem; color:#5a3a9e; line-height:1.5;">
         <p>Je m'appelle Ashu, étudiante en neurosciences passionnée par le cerveau et son fonctionnement. Ce projet NeuroKiddo est né de mon envie de rendre la science accessible et amusante pour les enfants.</p>
         <p>Ce qui m'a poussée ? La fascination pour la plasticité cérébrale et l'envie de partager cette magie avec le plus grand nombre.</p>
       </div>
     </div>
   </section>
+</main>
 
 <script>
   const stories = {
     story1: `
-      <h3>Le voyage de Max dans le cerveau</h3>
+      <h2 id="storyTitle">Le voyage de Max dans le cerveau</h2>
       <p>Max est un petit explorateur courageux qui découvre le cerveau humain. Il apprend que les neurones envoient des signaux électriques et chimiques très vite pour nous permettre de penser et de bouger.</p>
       <p>Au fil de son voyage, Max rencontre différentes parties du cerveau qui l'aident à comprendre comment on apprend, comment on ressent des émotions, et comment on contrôle nos mouvements.</p>
       <p>Une aventure incroyable pleine de découvertes fascinantes !</p>
     `,
     story2: `
-      <h3>Mia et les émotions</h3>
+      <h2 id="storyTitle">Mia et les émotions</h2>
       <p>Mia est une enfant qui ressent beaucoup d’émotions différentes chaque jour. Grâce à l’aide de son cerveau, elle apprend à reconnaître la joie, la tristesse, la colère et la peur.</p>
       <p>Avec l’aide de ses amis neurones, Mia découvre comment gérer ses émotions et les utiliser pour mieux comprendre les autres.</p>
       <p>Une histoire pleine de couleurs et d’apprentissage sur les émotions.</p>
@@ -326,13 +554,16 @@
   function openStory(id) {
     const modal = document.getElementById('storyModal');
     const content = document.getElementById('storyContent');
-    content.innerHTML = stories[id] || "<p>Histoire non trouvée.</p>";
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // empêche scroll arrière
+    content.innerHTML = stories[id] + '<button id="storyCloseBtn" aria-label="Fermer l\'histoire" onclick="closeStory()" style="position:absolute; top:15px; right:20px; background:none; border:none; font-size:26px; color:#552288; cursor:pointer; font-weight:700;">✖</button>';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Bloquer le scroll arrière
   }
   function closeStory() {
     const modal = document.getElementById('storyModal');
-    modal.style.display = 'none';
+    modal.classList.remove('active');
     document.body.style.overflow = 'auto';
   }
 </script>
+
+</body>
+</html>
