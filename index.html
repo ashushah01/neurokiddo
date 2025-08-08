@@ -1,138 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NeuroKiddo - Forêt enchantée</title>
+<style>
+  /* Reset et fond forêt pastel */
+  body, html {
+    margin: 0; padding: 0;
+    height: 100vh;
+    background: linear-gradient(180deg, #d9f0e8 0%, #a8d5c0 60%, #7abfa2 100%);
+    overflow: hidden;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3e4a3a;
+  }
 
-html
-fr">
-<title>Interaction des Enfants
-body {
-margin: 0;
-padding: 0;
-background: linear-gradient(to bottom, #f0e6f6, #f7f9f9);
-height: 100vh;
-display: flex;
-justify-content: center;
-align-items: center;
-overflow: hidden;
-position: relative;
-}
-.brain {
-background: radial-gradient(circle, rgba(255, 229, 204, 1) 0%, rgba(255, 158, 140, 1) 100%);
-width: 150px;
-height: 150px;
-border-radius: 50%;
-box-shadow: 0 0 20px rgba(255, 204, 204, 0.7);
-position: absolute;
-z-index: 2;
-}
-.child {
-width: 50px;
-height: 50px;
-background-color: #ffe0ff;
-border-radius: 50%;
-position: absolute;
-display: flex;
-justify-content: center;
-align-items: center;
-animation: float 2s infinite ease-in-out;
-}
-.child::after {
-content: '';
-width: 15px;
-height: 15px;
-background: #fff;
-border-radius: 50%;
-position: absolute;
-bottom: 5px;
-left: 50%;
-transform: translateX(-50%);
-}
-.child-face {
-width: 30px;
-height: 30px;
-background: #ffcc99;
-border-radius: 50%;
-position: relative;
-}
-.eye {
-width: 6px;
-height: 6px;
-background: #000;
-border-radius: 50%;
-position: absolute;
-}
-.eye.left {
-top: 10px;
-left: 8px;
-}
-.eye.right {
-top: 10px;
-right: 8px;
-}
-.smile {
-width: 15px;
-height: 5px;
-background: transparent;
-border-top: 3px solid #000;
-border-radius: 0 0 10px 10px;
-position: absolute;
-bottom: 8px;
-left: 50%;
-transform: translateX(-50%);
-}
-.bubble {
-position: absolute;
-background: #fff;
-padding: 5px 10px;
-border-radius: 10px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-opacity: 0;
-animation: appear 2s ease-in forwards;
-}
-@keyframes float {
-0%, 100% {
-transform: translateY(0);
-}
-50% {
-transform: translateY(-10px);
-}
-}
-@keyframes appear {
-0% {
-opacity: 0;
-}
-100% {
-opacity: 1;
-}
-}
-/* Floating elements /
-.flower, .star {
-position: absolute;
-background: #ffe6e6;
-border-radius: 50%;
-animation: float 5s infinite ease-in-out;
-}
-.flower {
-width: 15px;
-height: 15px;
-/ Custom flower styling can be done here /
-}
-.star {
-width: 20px;
-height: 20px;
-background: #fff;
-/ Custom star styling can be done here */
-}
+  /* Silhouettes d'arbres en CSS */
+  .tree {
+    position: absolute;
+    bottom: 0;
+    width: 120px;
+    height: 250px;
+    background: linear-gradient(to top, #6a8e70 0%, #a7c4a0 100%);
+    border-radius: 60px 60px 0 0;
+    filter: drop-shadow(0 3px 2px rgba(0,0,0,0.15));
+    transform-origin: bottom center;
+    animation: sway 6s ease-in-out infinite alternate;
+  }
+  .tree:before {
+    content: '';
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 100px;
+    background: linear-gradient(to top, #547651 0%, #8db08b 100%);
+    border-radius: 20px 20px 0 0;
+  }
+
+  /* Plusieurs arbres avec variations */
+  .tree1 { left: 10%; animation-delay: 0s; }
+  .tree2 { left: 30%; height: 220px; animation-delay: 1.5s; }
+  .tree3 { left: 50%; height: 240px; animation-delay: 0.7s; }
+  .tree4 { left: 70%; height: 210px; animation-delay: 1.2s; }
+  .tree5 { left: 85%; height: 230px; animation-delay: 0.3s; }
+
+  @keyframes sway {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(5deg); }
+  }
+
+  /* Cerveau lumineux */
+  .brain {
+    position: relative;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle at center, #f8f0ff 0%, #bfa3ff 70%);
+    border-radius: 50% 50% 60% 60% / 70% 70% 60% 60%;
+    box-shadow:
+      0 0 50px 20px #bfa3ff88,
+      inset 0 0 40px 10px #d6baffcc;
+    animation: gentleGlow 4s ease-in-out infinite;
+    z-index: 10;
+  }
+  @keyframes gentleGlow {
+    0%, 100% {
+      box-shadow:
+        0 0 50px 20px #bfa3ff88,
+        inset 0 0 40px 10px #d6baffcc;
+      transform: scale(1);
+    }
+    50% {
+      box-shadow:
+        0 0 70px 30px #d1afffff,
+        inset 0 0 50px 15px #e9c8ffdd;
+      transform: scale(1.05);
+    }
+  }
+
+  /* Enfants stylisés (ronds pastel) */
+  .children {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 320px; height: 320px;
+    margin-left: -160px; margin-top: -160px;
+    animation: rotate 40s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(360deg);}
+  }
+  .child {
+    position: absolute;
+    width: 60px; height: 60px;
+    background: #f4d9ff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 3px #cfa1ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: #6f4a86;
+    user-select: none;
+    animation: bounce 5s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-15px);}
+  }
+  .child:nth-child(1) { top: 5%; left: 50%; margin-left: -30px; animation-delay: 0s;}
+  .child:nth-child(2) { top: 50%; left: 95%; margin-top: -30px; animation-delay: 1s;}
+  .child:nth-child(3) { top: 95%; left: 50%; margin-left: -30px; animation-delay: 2s;}
+  .child:nth-child(4) { top: 50%; left: 5%; margin-top: -30px; animation-delay: 3s;}
+  .child:nth-child(5) { top: 25%; left: 25%; margin-left: -30px; animation-delay: 1.5s;}
+  .child:nth-child(6) { top: 75%; left: 75%; margin-left: -30px; animation-delay: 2.5s;}
+
+  /* Lucioles (points lumineux animés) */
+  .firefly {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #fff3a3;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 4px #fff3a3;
+    animation: flicker 3s infinite ease-in-out alternate;
+  }
+  @keyframes flicker {
+    0%, 100% { opacity: 1;}
+    50% { opacity: 0.2;}
+  }
+  /* Positions aléatoires */
+  .firefly1 { top: 20%; left: 40%; animation-delay: 0s;}
+  .firefly2 { top: 30%; left: 60%; animation-delay: 1s;}
+  .firefly3 { top: 70%; left: 70%; animation-delay: 0.5s;}
+  .firefly4 { top: 60%; left: 20%; animation-delay: 1.5s;}
+  .firefly5 { top: 40%; left: 80%; animation-delay: 2s;}
 </style>
-<div class="brain"><div class="child" style="top: 20%; left: 20%;">
-<div class="child-face">
-<div class="eye left"><div class="eye right"><div class="smile"><div class="child" style="top: 20%; left: 70%;">
-<div class="child-face">
-<div class="eye left"><div class="eye right"><div class="smile"><div class="child" style="top: 50%; left: 40%;">
-<div class="child-face">
-Salut!J'aime jouer!
-document.addEventListener('DOMContentLoaded', function () {
-const bubbles = document.querySelectorAll('.bubble');
-bubbles.forEach((bubble, index) => {
-bubble.style.animationDelay = ${index * 2}s;
-bubble.style.opacity = 1;
-});
-});
-</script>
+</head>
+<body>
+
+<!-- Arbres -->
+<div class="tree tree1"></div>
+<div class="tree tree2"></div>
+<div class="tree tree3"></div>
+<div class="tree tree4"></div>
+<div class="tree tree5"></div>
+
+<!-- Cerveau lumineux -->
+<div class="brain" aria-label="Cerveau lumineux"></div>
+
+<!-- Enfants qui tournent -->
+<div class="children" aria-label="Enfants autour du cerveau">
+  <div class="child">👧</div>
+  <div class="child">👦</div>
+  <div class="child">👧</div>
+  <div class="child">👦</div>
+  <div class="child">👧</div>
+  <div class="child">👦</div>
+</div>
+
+<!-- Lucioles -->
+<div class="firefly firefly1"></div>
+<div class="firefly firefly2"></div>
+<div class="firefly firefly3"></div>
+<div class="firefly firefly4"></div>
+<div class="firefly firefly5"></div>
+
+</body>
+</html>
