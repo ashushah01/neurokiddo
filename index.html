@@ -1,174 +1,138 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8" />
-<title>NeuroKiddo - Monde Pastel</title>
-<style>
-  /* --- Reset et fond pastel --- */
-  body, html {
-    margin: 0; padding: 0;
-    height: 100%;
-    background: linear-gradient(135deg, #f5e1f7, #d1c8f7);
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    overflow: hidden;
-    color: #5a4a72;
-  }
 
-  /* Conteneur centré */
-  .container {
-    position: relative;
-    width: 100vw; height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  /* Cerveau "lanterne" pastel */
-  .brain {
-    position: relative;
-    width: 180px; height: 180px;
-    background: radial-gradient(circle at center, #fff0f8, #c4a1f9);
-    border-radius: 50% 50% 60% 60% / 70% 70% 60% 60%;
-    box-shadow:
-      0 0 40px 15px #d2a4ff,
-      inset 0 0 30px 10px #f8e1ff;
-    animation: gentleGlow 4s ease-in-out infinite;
-    z-index: 20;
-  }
-  @keyframes gentleGlow {
-    0%, 100% {
-      box-shadow:
-        0 0 40px 15px #d2a4ff,
-        inset 0 0 30px 10px #f8e1ff;
-      transform: scale(1);
-    }
-    50% {
-      box-shadow:
-        0 0 60px 25px #c497f9,
-        inset 0 0 40px 15px #eac8ff;
-      transform: scale(1.05);
-    }
-  }
-
-  /* Enfants : cercles pastel avec visage simple */
-  .children {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 350px; height: 350px;
-    margin-left: -175px; margin-top: -175px;
-    animation: rotate 30s linear infinite;
-  }
-  @keyframes rotate {
-    from { transform: rotate(0deg);}
-    to { transform: rotate(360deg);}
-  }
-
-  .child {
-    position: absolute;
-    width: 60px; height: 60px;
-    background: #e9c2f7;
-    border-radius: 50%;
-    box-shadow: 0 0 8px 2px #d8a5ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    color: #6a548a;
-    user-select: none;
-    animation: bounce 4s ease-in-out infinite;
-  }
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(-12px);}
-  }
-
-  /* Visages simples (yeux et sourire) */
-  .child::before {
-    content: "• •";
-    position: absolute;
-    top: 16px; left: 12px;
-  }
-  .child::after {
-    content: "∪";
-    position: absolute;
-    top: 34px; left: 17px;
-    font-size: 22px;
-  }
-
-  /* Positions en cercle pour les enfants */
-  .child:nth-child(1) { top: 10%; left: 50%; margin-left: -30px; animation-delay: 0s;}
-  .child:nth-child(2) { top: 50%; left: 90%; margin-top: -30px; animation-delay: 1s;}
-  .child:nth-child(3) { top: 90%; left: 50%; margin-left: -30px; animation-delay: 2s;}
-  .child:nth-child(4) { top: 50%; left: 10%; margin-top: -30px; animation-delay: 3s;}
-  .child:nth-child(5) { top: 25%; left: 25%; margin-left: -30px; animation-delay: 1.5s;}
-  .child:nth-child(6) { top: 75%; left: 75%; margin-left: -30px; animation-delay: 2.5s;}
-
-  /* Bulles de dialogue douces */
-  .bubble {
-    position: absolute;
-    background: #f7e9ffcc;
-    color: #6a548a;
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: 14px;
-    max-width: 140px;
-    opacity: 0;
-    animation: fadeInOut 8s ease-in-out infinite;
-    user-select: none;
-    pointer-events: none;
-  }
-  @keyframes fadeInOut {
-    0%, 30%, 100% {opacity: 0;}
-    40%, 90% {opacity: 1;}
-  }
-  .bubble:nth-child(1) { top: 5%; left: 55%; animation-delay: 1s;}
-  .bubble:nth-child(2) { top: 55%; left: 92%; animation-delay: 3s;}
-  .bubble:nth-child(3) { top: 92%; left: 55%; animation-delay: 5s;}
-  .bubble:nth-child(4) { top: 55%; left: 8%; animation-delay: 7s;}
-
-  /* Décorations flottantes (fleurs) */
-  .flower {
-    position: absolute;
-    width: 40px; height: 40px;
-    background: #f9d1ff;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    box-shadow: 0 0 8px 2px #d79fff;
-    animation: floatUpDown 6s ease-in-out infinite;
-  }
-  @keyframes floatUpDown {
-    0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(-15px);}
-  }
-  .flower:nth-child(1) { top: 80%; left: 20%; animation-delay: 0s;}
-  .flower:nth-child(2) { top: 70%; left: 60%; animation-delay: 2s;}
-  .flower:nth-child(3) { top: 85%; left: 85%; animation-delay: 4s;}
-
+html
+fr">
+<title>Interaction des Enfants
+body {
+margin: 0;
+padding: 0;
+background: linear-gradient(to bottom, #f0e6f6, #f7f9f9);
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+position: relative;
+}
+.brain {
+background: radial-gradient(circle, rgba(255, 229, 204, 1) 0%, rgba(255, 158, 140, 1) 100%);
+width: 150px;
+height: 150px;
+border-radius: 50%;
+box-shadow: 0 0 20px rgba(255, 204, 204, 0.7);
+position: absolute;
+z-index: 2;
+}
+.child {
+width: 50px;
+height: 50px;
+background-color: #ffe0ff;
+border-radius: 50%;
+position: absolute;
+display: flex;
+justify-content: center;
+align-items: center;
+animation: float 2s infinite ease-in-out;
+}
+.child::after {
+content: '';
+width: 15px;
+height: 15px;
+background: #fff;
+border-radius: 50%;
+position: absolute;
+bottom: 5px;
+left: 50%;
+transform: translateX(-50%);
+}
+.child-face {
+width: 30px;
+height: 30px;
+background: #ffcc99;
+border-radius: 50%;
+position: relative;
+}
+.eye {
+width: 6px;
+height: 6px;
+background: #000;
+border-radius: 50%;
+position: absolute;
+}
+.eye.left {
+top: 10px;
+left: 8px;
+}
+.eye.right {
+top: 10px;
+right: 8px;
+}
+.smile {
+width: 15px;
+height: 5px;
+background: transparent;
+border-top: 3px solid #000;
+border-radius: 0 0 10px 10px;
+position: absolute;
+bottom: 8px;
+left: 50%;
+transform: translateX(-50%);
+}
+.bubble {
+position: absolute;
+background: #fff;
+padding: 5px 10px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+opacity: 0;
+animation: appear 2s ease-in forwards;
+}
+@keyframes float {
+0%, 100% {
+transform: translateY(0);
+}
+50% {
+transform: translateY(-10px);
+}
+}
+@keyframes appear {
+0% {
+opacity: 0;
+}
+100% {
+opacity: 1;
+}
+}
+/* Floating elements /
+.flower, .star {
+position: absolute;
+background: #ffe6e6;
+border-radius: 50%;
+animation: float 5s infinite ease-in-out;
+}
+.flower {
+width: 15px;
+height: 15px;
+/ Custom flower styling can be done here /
+}
+.star {
+width: 20px;
+height: 20px;
+background: #fff;
+/ Custom star styling can be done here */
+}
 </style>
-</head>
-<body>
-
-<div class="container">
-  <div class="brain" aria-label="Cerveau lumineux"></div>
-  
-  <div class="children" aria-label="Enfants qui tournent autour">
-    <div class="child"></div>
-    <div class="child"></div>
-    <div class="child"></div>
-    <div class="child"></div>
-    <div class="child"></div>
-    <div class="child"></div>
-  </div>
-
-  <div class="bubble" style="top: 5%; left: 55%;">Le cerveau est magique !</div>
-  <div class="bubble" style="top: 55%; left: 92%;">J'adore apprendre !</div>
-  <div class="bubble" style="top: 92%; left: 55%;">Regardez cette idée !</div>
-  <div class="bubble" style="top: 55%; left: 8%;">On s'amuse tous ensemble !</div>
-
-  <div class="flower" style="top: 80%; left: 20%;"></div>
-  <div class="flower" style="top: 70%; left: 60%;"></div>
-  <div class="flower" style="top: 85%; left: 85%;"></div>
-</div>
-
-</body>
-</html>
+<div class="brain"><div class="child" style="top: 20%; left: 20%;">
+<div class="child-face">
+<div class="eye left"><div class="eye right"><div class="smile"><div class="child" style="top: 20%; left: 70%;">
+<div class="child-face">
+<div class="eye left"><div class="eye right"><div class="smile"><div class="child" style="top: 50%; left: 40%;">
+<div class="child-face">
+Salut!J'aime jouer!
+document.addEventListener('DOMContentLoaded', function () {
+const bubbles = document.querySelectorAll('.bubble');
+bubbles.forEach((bubble, index) => {
+bubble.style.animationDelay = ${index * 2}s;
+bubble.style.opacity = 1;
+});
+});
+</script>
